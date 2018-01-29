@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请求数据并显示</title>
+    <style>
+        div{border: 1px solid;padding: 10px}
+    </style>
+</head>
+<script src="jquery-3.0.0.min.js"></script>
+<body>
+<div>
+    <input id="t" type="text" placeholder="id" />
+    <button id="b">提交</button>
+</div>
+</body>
+<script>
+    var requestUrl=location.href.slice(0,location.href.lastIndexOf('/'))+'/backend.php';
+    console.log('请求地址：',requestUrl);
+
+    function getData(id) {
+        var ajax=$.ajax({
+            url:requestUrl,
+            type:'GET',    //发送请求的方式
+            //type:'POST',    //发送请求的方式
+            data:{'requireid':id},    //要发送到服务器的数据
+            //async:true,//异步，只能在回调函数中获取值；
+            async:false,//同步，此时外面才能获取到回调函数中的值。
+
+            dataType:'json',    //期待的返回数据的类型（注意字母大小写）
+            success:function(data){    //接收成功，参数是返回的数据
+                console.log(data);
+            },
+            error:function(xhr,status,message){
+                console.log('异常消息: '+status+' '+message);
+            }
+        });
+        return ajax.responseJSON.data;
+    }
+    var result=getData({'id':3});
+    console.log(result);
+
+    document.getElementById('b').addEventListener('click',function () {
+        var id=document.getElementById('t').value;
+        result=postData({id:id});
+        console.log(result);
+    });
+    function postData(data) {
+        var ajax=$.ajax({
+            url:requestUrl,
+            //type:'GET',    //发送请求的方式
+            type:'POST',    //发送请求的方式
+            data:data,    //要发送到服务器的数据
+            //async:true,//异步，只能在回调函数中获取值；
+            async:false,//同步，此时外面才能获取到回调函数中的值。
+
+            dataType:'json',    //期待的返回数据的类型（注意字母大小写）
+            success:function(data){    //接收成功，参数是返回的数据
+                console.log(data);
+            },
+            error:function(xhr,status,message){
+                console.log('异常消息: '+status+' '+message);
+            }
+        });
+        return ajax.responseJSON.data;
+    }
+
+
+</script>
+</html>
