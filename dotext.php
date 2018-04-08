@@ -39,3 +39,15 @@ echo $content;
 }*/
 
 fclose($file);
+
+echo '<hr />';
+
+echo realpath('a.txt');//获取绝对路径
+echo '<br />';
+echo realpath('.');//获取绝对路径
+echo '<br />';
+echo dirname('a.txt');//从路径获取目录
+echo '<br />';
+#unlink('b.txt');//删除文件
+var_dump(pathinfo('a.txt'));//文件信息
+echo '<br />';
