@@ -32,6 +32,11 @@
 
     <dt>▲返回字符串的长度。strlen</dt>
     <dd><?=strlen(" Hello world ")?></dd>
+    <dd><?=strlen(" 你好世界 ")?></dd>
+
+    <dt>▲返回字符串（针对中文）的长度。mb_strlen</dt>
+    <dd><?=mb_strlen(" Hello world ")?></dd>
+    <dd><?=mb_strlen(" 你好世界 ")?></dd>
 
     <dt>▲从左侧移除空白字符或其他字符。ltrim</dt>
     <dd><?=strlen(ltrim(" Hello world "))?></dd>
