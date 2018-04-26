@@ -32,6 +32,11 @@
 
     <dt>▲返回字符串的长度。strlen</dt>
     <dd><?=strlen(" Hello world ")?></dd>
+    <dd><?=strlen(" 你好世界 ")?></dd>
+
+    <dt>▲返回字符串（针对中文）的长度。mb_strlen</dt>
+    <dd><?=mb_strlen(" Hello world ")?></dd>
+    <dd><?=mb_strlen(" 你好世界 ")?></dd>
 
     <dt>▲从左侧移除空白字符或其他字符。ltrim</dt>
     <dd><?=strlen(ltrim(" Hello world "))?></dd>
@@ -168,6 +173,18 @@ def\nghi")//PHP中字符串回车与\n等效?>
 
     <dt>▲反转字符串。strrev</dt>
     <dd><?=strrev('Sienna Guillory')?></dd>
+
+    <?php
+    function endsWith($haystack, $needle){
+        $length = strlen($needle);
+        $start = $length * -1; //negative
+        return (substr($haystack, $start, $length) === $needle);
+    }
+    ?>
+
+    <dt>▲反转字符串。strrev</dt>
+    <dd><?=endsWith('Sienna Guillory','Guillory')?'true':'false'?></dd>
+    <dd><?=endsWith('Sienna Guillory','guillory')?'true':'false'?></dd>
 </dl>
 </body>
 </html>
