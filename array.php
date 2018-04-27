@@ -427,7 +427,7 @@
         ?>
     </dd>
     <dd><?=$json?></dd>
-    <dt>▲将json字符串转化为std Class或数组。json_encode()</dt>
+    <dt>▲将json字符串转化为std Class或数组。json_decode()</dt>
     <dd>
         <?php
         $result=json_decode($json);
