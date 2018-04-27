@@ -417,6 +417,29 @@
         print_r(doArray($a1,$a2));
         ?>
     </dd>
+
+    <dt>▲将数组转化为json字符串。json_encode()</dt>
+    <dd>
+        <?php
+        $arr1=['name'=>'pete哈','gender'=>'male'];
+        $json=json_encode($arr1);
+        print_r($arr1);
+        ?>
+    </dd>
+    <dd><?=$json?></dd>
+    <dt>▲将json字符串转化为std Class或数组。json_encode()</dt>
+    <dd>
+        <?php
+        $result=json_decode($json);
+        print_r($result);
+        ?>
+    </dd>
+    <dd>
+        <?php
+        $result=json_decode($json,true);
+        print_r($result);
+        ?>
+    </dd>
 </dl>
 </body>
 </html>
