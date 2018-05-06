@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-3.0.0.min.js"></script>
+</head>
+<body>
+<form id="form1">
+    <input type="text" name="name" value="harry"/>
+    <input type="number" name="age" value="21"/>
+</form>
+</body>
+<script>
+    //欲测试下面代码，请先配置虚拟域名到本目录，再用服务器访问
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    var xhr=new XMLHttpRequest();
+    xhr.open("get","/backend.php?sign=xml_http_request&id=11",true);
+    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xhr.responseType='json';
+    xhr.onreadystatechange=function()//只有在异步模式才能使用
+    {
+        if (xhr.readyState==4 && xhr.status==200) {//请求成功
+            console.log(xhr.response);
+        }
+    };
+    xhr.send();
+    console.log(xhr);
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    var xhr2=new XMLHttpRequest();
+    xhr2.open("post","/backend.php",true);
+    xhr2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xhr2.responseType='json';
+    xhr2.onreadystatechange=function()//只有在异步模式才能使用
+    {
+        if (xhr2.readyState==4 && xhr2.status==200) {//请求成功
+            console.log(xhr2.response);
+        }
+    };
+    xhr2.send('sign=xml_http_request&id=22');
+    //console.log(xhr2);
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    /*var sync_result=$.ajax({
+        url:'/backend.php',
+        type:'get',
+        async:false,//同步，不推荐
+        dataType:'json',
+        data:{id:12,special:'sync'},
+        success:function (result) {
+            console.log(result);
+        },
+        error:function (xhr, status, message) {
+            console.log('ajax error : ' + status + ' --> ' + message);
+        }
+    }).responseJSON;
+    console.log(sync_result);*/
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    $.ajax({
+        url:'/backend.php',
+        type:'get',
+        async:true,
+        data:{id:11,name:'jerry'},
+        dataType:'json',
+        success:function (result) {
+            console.log(result);
+        },
+        error:function (xhr, status, message) {
+            console.log('ajax error : ' + status + ' --> ' + message);
+        }
+    });
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    $.ajax({
+        url:'/backend.php',
+        type:'post',
+        async:true,
+        data:{id:12,name:'tom'},
+        dataType:'json',
+        success:function (result) {
+            console.log(result);
+        },
+        error:function (xhr, status, message) {
+            console.log('ajax error : ' + status + ' --> ' + message);
+        }
+    });
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    $.ajax({
+        url:'/backend.php',
+        type:'post',
+        async:true,
+        data:new FormData($('#form1')[0]),
+        dataType:'json',
+        success:function (result) {
+            console.log(result);
+        },
+        error:function (xhr, status, message) {
+            console.log('ajax error : ' + status + ' --> ' + message);
+        },
+        // cache:true,
+        contentType:false,
+        processData:false
+    });
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    var formData=new FormData();
+    formData.append('name','cyclone');
+    formData.append('gender','female');
+    $.ajax({
+        url:'/backend.php',
+        type:'post',
+        async:true,
+        data:formData,
+        dataType:'json',
+        success:function (result) {
+            console.log(result);
+        },
+        error:function (xhr, status, message) {
+            console.log('ajax error : ' + status + ' --> ' + message);
+        },
+        // cache:true,
+        contentType:false,
+        processData:false
+    });
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    $.post('/backend.php',{
+        name:'pencil'
+    },function (result) {
+        console.log(result);
+    },'json');
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    $.get('/backend.php',{
+        name:'ereaser'
+    },function (result) {
+        console.log(result);
+    },'json');
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+</script>
+</html>
