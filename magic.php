@@ -11,6 +11,8 @@
 
     <dt>__DIR__</dt>
     <dd><?=__DIR__?></dd>
+    <dd><?=getcwd()?></dd>
+    <dd><?php var_dump(__DIR__===getcwd());?></dd><!--true-->
 
     <dt>__LINE__</dt>
     <dd><?=__LINE__?></dd>
