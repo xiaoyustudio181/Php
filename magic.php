@@ -24,6 +24,48 @@
         f1();
         ?>
     </dd>
+
+    <dt>++++++++++++++++++++++++++++++++++++++++++++++</dt>
+    <dt>++++++++++++++++++++++++++++++++++++++++++++++</dt>
+
+    <dt>function_exists</dt>
+    <dd>
+        <?php
+        var_dump(function_exists('f1'));//true
+        ?>
+    </dd>
+    <dd>
+        <?php
+        var_dump(function_exists('f2'));//false
+        ?>
+    </dd>
+
+    <?php class Person{
+        private function eat(){}
+    }?>
+    <dt>class_exists</dt>
+    <dd>
+        <?php
+        var_dump(class_exists('Person'));//true
+        ?>
+    </dd>
+    <dd>
+        <?php
+        var_dump(class_exists('Person2'));//false
+        ?>
+    </dd>
+
+    <dt>method_exists</dt>
+    <dd>
+        <?php
+        var_dump(method_exists(new Person(),'eat'));//true
+        ?>
+    </dd>
+    <dd>
+        <?php
+        var_dump(method_exists(new Person(),'eat2'));//false
+        ?>
+    </dd>
 </dl>
 </body>
 </html>
