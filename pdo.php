@@ -1,18 +1,18 @@
 <?php
-$M = new Model('localhost', 'company1');
+$M = new PDOModel();
 $M->Test();
 
-class Model
+class PDOModel
 {
     private $PDO;
 
-    function __construct($dbip, $dbname)
+    function __construct()
     {
         try {
             $options = [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"];
-            $this->PDO = new PDO("mysql:host=$dbip;dbname=$dbname", 'root', '', $options);
+            $this->PDO = new PDO("mysql:host=localhost; dbname=company1", 'root', '', $options);
         } catch (PDOException $e) {
-            echo "数据库连接失败。" . $e->getMessage();
+            die( "数据库连接失败。" .$e->getMessage());
         }
     }
 
