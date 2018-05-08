@@ -2,46 +2,101 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>表单提交</title>
+    <title></title>
 </head>
 <body>
 <?php
-echo $_SERVER['REQUEST_METHOD'],'<br />';
-#if($_SERVER['REQUEST_METHOD']=='POST')var_dump($_POST);
-if($_POST)var_dump($_POST);
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    var_dump($_POST);
+    if($_FILES){
+        var_dump($_FILES);
+    }
+}
 ?>
-<form action="" method="post">
-    <input name="Name" type="text" placeholder="姓名" />
-    <br />
-    <input name="Gender" id="RadioButton1" type="radio" value="Male" checked="checked" />
-    <label for="RadioButton1">男</label>
-    <input name="Gender" id="RadioButton2" type="radio" value="Female" />
-    <label for="RadioButton2">女</label>
-    <br />
-    <input name="Age" type="number" min="12" max="120" placeholder="年龄" />
-    <br />
-    <input name="Password" type="password" placeholder="设置密码" />
-    <br />
-    <select name="BloodType" title="血型">
-        <optgroup label="Class1">
-            <option value="A">A型</option>
-            <option value="B">B型</option>
-        </optgroup>
-        <optgroup label="Class2">
-            <option value="AB">AB型</option>
-            <option value="O">O型</option>
-        </optgroup>
-    </select>
-    <br />
-    <!--<input id="checkbox1" type="checkbox" name="Hobbies[]" value="Reading" />-->
-    <input id="checkbox1" type="checkbox" name="Hobbies[h1][]" value="Reading" />
-    <label for="checkbox1">阅读</label>
-    <!--<input id="checkbox2" type="checkbox" name="Hobbies[]" value="Swimming" />-->
-    <input id="checkbox2" type="checkbox" name="Hobbies[h1][]" value="Swimming" />
-    <label for="checkbox2">游泳</label>
-    <br />
-    <textarea name="More" placeholder="更多信息···"></textarea>
-    <br />
+<form action="" method="post" enctype="multipart/form-data">
+    <h2>表单</h2>
+    <dl>
+        <dt>姓名</dt>
+        <dd>
+            <input name="name" type="text" placeholder="name" value="harry" />
+        </dd>
+
+        <dt>性别</dt>
+        <dd>
+            <input name="gender" id="rb1" type="radio" value="male" checked="checked" />
+            <label for="rb1">男</label>
+
+            <label>
+                <input name="gender" type="radio" value="female" /> 女
+            </label>
+        </dd>
+
+        <dt>年龄</dt>
+        <dd>
+            <input name="age" type="number" min="0" max="120" placeholder="age" value="21" />
+        </dd>
+
+        <dt>密码</dt>
+        <dd>
+            <input name="password" type="password" placeholder="password" value="123" />
+        </dd>
+
+        <dt>血型</dt>
+        <dd>
+            <select name="bloodType" title="血型">
+                <optgroup label="class1">
+                    <option value="A">A型</option>
+                    <option value="B" selected="selected">B型</option>
+                </optgroup>
+                <optgroup label="class2">
+                    <option value="AB">AB型</option>
+                    <option value="O">O型</option>
+                </optgroup>
+            </select>
+        </dd>
+
+        <dt>爱好</dt>
+        <dd>
+            <label>
+                <input type="checkbox" name="hobbies[]" value="Reading" checked="checked" />
+                阅读
+            </label>
+
+            <label>
+                <input type="checkbox" name="hobbies[]" value="Swimming" checked="checked" />
+                游泳
+            </label>
+        </dd>
+
+        <dt>技能</dt>
+        <dd>
+            <label>
+                <input type="checkbox" name="skills[type1][]" value="driving" checked="checked"/>驾驶
+            </label>
+
+            <label>
+                <input type="checkbox" name="skills[type1][]" value="cooking" checked="checked"/>烹饪
+            </label>
+
+            <label>
+                <input type="checkbox" name="skills[type2][]" value="php" checked="checked"/>PHP开发
+            </label>
+
+            <label>
+                <input type="checkbox" name="skills[type2][]" value="c#" checked="checked"/>C#开发
+            </label>
+        </dd>
+
+        <dt>更多</dt>
+        <dd>
+            <textarea name="more" placeholder="更多信息···">hello world</textarea>
+        </dd>
+
+        <dt>头像（可多选）</dt>
+        <dd>
+            <input type="file" multiple="multiple" name="headimgs[]"/>
+        </dd>
+    </dl>
     <input type="submit" />
 </form>
 </body>
