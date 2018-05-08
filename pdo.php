@@ -1,18 +1,18 @@
 <?php
-$M=new Model('localhost','northwind');
-$M->ShowDatabases();
+$M = new Model('localhost', 'company1');
+$M->Test();
 
 class Model
 {
     private $PDO;
 
-    function __construct($dbip,$dbname)
+    function __construct($dbip, $dbname)
     {
         try {
             $options = [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"];
             $this->PDO = new PDO("mysql:host=$dbip;dbname=$dbname", 'root', '', $options);
         } catch (PDOException $e) {
-            echo "连接失败：" . $e->getMessage();
+            echo "数据库连接失败。" . $e->getMessage();
         }
     }
 
@@ -20,10 +20,52 @@ class Model
     {
         $this->PDO = null;
     }
-    public function ShowDatabases(){
-        $result=$this->PDO->query('show databases;')->fetchAll();
-        foreach ($result as $each) {
-            echo $each[0],'<br />';
+
+    public function Test()
+    {
+        echo '<hr />';
+
+        $pdo_statement = $this->PDO->query('show databases;');
+//        $pdo_statement = $this->PDO->query('select * from `profiles`;');
+
+        echo '查询结果的列数：',$pdo_statement->columnCount(),'<br />';
+        echo '查询结果的行数：',$pdo_statement->rowCount();
+
+        //取法1：数字与关联的键名和键值
+//        foreach ($pdo_statement as $row){
+//            var_dump($row);
+//        }
+
+        //取法2：数字与关联的键名和键值
+//        $fetchAll=$pdo_statement->fetchAll();
+//        var_dump($fetchAll);
+
+        //取法3：关联的键名和键值
+//        while ($row = $pdo_statement->fetch(PDO::FETCH_ASSOC)) {
+//            var_dump($row);
+//        }
+
+        //取法4：数字的键名和键值
+//        while ($row = $pdo_statement->fetch(PDO::FETCH_NUM)) {
+//            var_dump($row);
+//        }
+
+        //取法5：数字与关联的键名和键值
+//        while ($row = $pdo_statement->fetch(PDO::FETCH_BOTH)) {
+//            var_dump($row);
+//        }
+
+        //取法6：第一列键值
+        while ($row = $pdo_statement->fetch(PDO::FETCH_COLUMN)) {
+            var_dump($row);
         }
+
+        //返回受影响的行数，执行失败返回false
+//        $pdo_statement=$this->PDO->exec("update `profiles` set `name`='甲2' where `employeeid`=1;");
+//        var_dump($pdo_statement);
+
+        echo '<hr />';
     }
+
+
 }
