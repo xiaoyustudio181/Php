@@ -533,6 +533,19 @@
         var_dump($result);
         ?>
     </li>
+    <li>
+        遍历数组。<br/>
+        <?php
+        $arr = ['a' => 'apple', 'b' => 'banana', 'c' => 'chip', 'd' => 'dumpling'];
+        foreach ($arr as $value) {
+            echo "$value<br />";
+        }
+        echo '<hr />';
+        foreach ($arr as $key => $value) {
+            echo "$key ---- $value<br />";
+        }
+        ?>
+    </li>
 </ol>
 </body>
 </html>
