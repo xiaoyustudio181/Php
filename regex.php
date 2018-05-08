@@ -1,27 +1,41 @@
-<?php # Regular Expression
-global $regex;
-if(!empty($_GET)){
-    $value1=$_GET['value1'];
-    $regex='/[A-Z]+/';
-    if(preg_match($regex,$value1)) HTML(1); else HTML(2);
-}else HTML($ok=0);
+<?php
 
-function HTML($ok){?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>PHP正则表达式测试</title>
-</head>
-<body>
-<h3>PHP Regular Expression</h3>
-<form method="get" target="">
-    <input type="text" name="value1" />
-    <input type="submit" value="OK" />
-    <?php if($ok==1)echo 'Right';elseif($ok==2) echo 'Wrong';?>
-    <br />
-    正则表达式：<?=$GLOBALS['regex']?>
-    <pre style="font-size: large; white-space:pre-wrap">
+global $regex;
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $value1 = $_POST['value1'];
+    $regex = '/[A-Z]+/';
+    if (preg_match($regex, $value1)) {
+        HTML(1);
+    } else {
+        HTML(2);
+    }
+} else HTML($ok = 0);
+
+function HTML($ok)
+{
+    ?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>PHP正则表达式测试</title>
+    </head>
+    <body>
+    <h3>PHP Regular Expression</h3>
+    <form method="post" action="">
+        <input type="text" name="value1"/>
+        <input type="submit" value="OK"/>
+        <?php if ($ok == 1) {
+            echo 'Right';
+        } elseif ($ok == 2) {
+            echo 'Wrong';
+        } ?>
+        <br/>
+        正则表达式：<?= $GLOBALS['regex'] ?>
+
+
+        <pre style="font-size: large; white-space:pre-wrap">
 preg_match()，返回0次(没有匹配)或1次，preg_match()在第一次匹配之后将停止搜索。
 preg_match_all()，返回匹配次数，会一直搜索到subject的结尾。出错返回 FALSE。
 preg_replace()，该函数与ereg_replace()类似，不同在于它利用匹配的模式去替换输入的参数。
@@ -128,9 +142,9 @@ x|y
     如果 n 为八进制数字 (0-3)，且 m 和 l 均为八进制数字 (0-7)，则匹配八进制转义值 nml。
 \un
     匹配 n，其中 n 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9 匹配版权符号 (?)。</pre>
-</form>
-</body>
-</html>
+    </form>
+    </body>
+    </html>
 <?php }
 /*
 　　
