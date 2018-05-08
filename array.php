@@ -5,386 +5,499 @@
     <title>数组函数</title>
 </head>
 <body>
-<dl>
-    <dt>▲返回数组长度。count</dt>
-    <dd><?=count([1,1.2,true,null,['aa',"cc"]])?></dd>
-
-    <dt>▲删除键名，按键值升序排序。sort</dt>
-    <dd><?php
-        $nums=["B"=>"3","D"=>"2","C"=>"5","E"=>"6","A"=>"1","F"=>"4"];
-        $chars=["3"=>"B","2"=>"D","5"=>"C","6"=>"E","1"=>"A","4"=>"F"];
-        sort($nums);
-        sort($chars);
-        print_r($nums); echo '<br />';
-        print_r($chars); ?>
-    </dd>
-
-    <dt>▲删除键名，按键值降序排序。rsort</dt>
-    <dd><?php
-        $nums=["B"=>"3","D"=>"2","C"=>"5","E"=>"6","A"=>"1","F"=>"4"];
-        $chars=["3"=>"B","2"=>"D","5"=>"C","6"=>"E","1"=>"A","4"=>"F"];
-        rsort($nums);
-        rsort($chars);
-        print_r($nums);echo '<br />';
-        print_r($chars); ?>
-    </dd>
-
-    <dt>▲留旧键名，按键值升序排序。asort</dt>
-    <dd>
+<ol>
+    <li>
+        返回数组长度。count($array)
         <?php
-        $nums=["B"=>"3","D"=>"2","C"=>"5","E"=>"6","A"=>"1","F"=>"4"];
-        $chars=["3"=>"B","2"=>"D","5"=>"C","6"=>"E","1"=>"A","4"=>"F"];
-        asort($nums);
-        asort($chars);
-        print_r($nums); echo '<br />';
-        print_r($chars); ?>
-    </dd>
-
-    <dt>▲留旧键名，按键值降序排序。arsort</dt>
-    <dd><?php
-        $nums=["B"=>"3","D"=>"2","C"=>"5","E"=>"6","A"=>"1","F"=>"4"];
-        $chars=["3"=>"B","2"=>"D","5"=>"C","6"=>"E","1"=>"A","4"=>"F"];
-        arsort($nums);
-        arsort($chars);
-        print_r($nums); echo '<br />';
-        print_r($chars); ?>
-    </dd>
-
-    <dt>▲留旧键名，按键名升序排序。ksort</dt>
-    <dd>
+        $arr = [1, 2, 3];
+        $result = count($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        删除键名，按键值升序排序。sort($array)
         <?php
-        $nums=["B"=>"3","D"=>"2","C"=>"5","E"=>"6","A"=>"1","F"=>"4"];
-        $chars=["3"=>"B","2"=>"D","5"=>"C","6"=>"E","1"=>"A","4"=>"F"];
-        ksort($nums);
-        ksort($chars);
-        print_r($nums); echo '<br />';
-        print_r($chars); ?>
-    </dd>
-
-    <dt>▲留旧键名，按键名降序排序。krsort</dt>
-    <dd>
+        $arr1 = ["B" => "3", "D" => "2", "C" => "5", "E" => "6", "A" => "1", "F" => "4"];
+        $arr2 = ["3" => "B", "2" => "D", "5" => "C", "6" => "E", "1" => "A", "4" => "F"];
+        sort($arr1);
+        sort($arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        ?>
+    </li>
+    <li>
+        删除键名，按键值降序排序。rsort($array)
         <?php
-        $nums=["B"=>"3","D"=>"2","C"=>"5","E"=>"6","A"=>"1","F"=>"4"];
-        $chars=["3"=>"B","2"=>"D","5"=>"C","6"=>"E","1"=>"A","4"=>"F"];
-        krsort($nums);
-        krsort($chars);
-        print_r($nums); echo '<br />';
-        print_r($chars); ?>
-    </dd>
-
-    <dt>▲用回调函数排序（默认从小到大）。usort</dt>
-    <dd><?php
-        $a=['b',2,'c',1,'a',3,'8','7'];//数组中包含字符串、数字、字符串中的数字。
-        function MySort($a,$b){//返回值为正整数的排后面，为负整数的排前面。
-            if($a===$b) return 0;
-            elseif(is_string($a) && is_string($b)) return strcmp($a,$b);#字符与字符比较，根据ASCII码比较字符串，返回-1,0,1
-            elseif(is_string($a) && is_int($b)) return -1;#字符与数字比较
-            elseif(is_int($a) && is_string($b)) return 1;#数字与字符比较
-            elseif(is_int($a) && is_int($b)) return -($a-$b);#数字与数字比较
-            else return 0;
+        $arr1 = ["B" => "3", "D" => "2", "C" => "5", "E" => "6", "A" => "1", "F" => "4"];
+        $arr2 = ["3" => "B", "2" => "D", "5" => "C", "6" => "E", "1" => "A", "4" => "F"];
+        rsort($arr1);
+        rsort($arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        ?>
+    </li>
+    <li>
+        留旧键名，按键值升序排序。asort($array)
+        <?php
+        $arr1 = ["B" => "3", "D" => "2", "C" => "5", "E" => "6", "A" => "1", "F" => "4"];
+        $arr2 = ["3" => "B", "2" => "D", "5" => "C", "6" => "E", "1" => "A", "4" => "F"];
+        asort($arr1);
+        asort($arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        ?>
+    </li>
+    <li>
+        留旧键名，按键值降序排序。arsort($array)
+        <?php
+        $arr1 = ["B" => "3", "D" => "2", "C" => "5", "E" => "6", "A" => "1", "F" => "4"];
+        $arr2 = ["3" => "B", "2" => "D", "5" => "C", "6" => "E", "1" => "A", "4" => "F"];
+        arsort($arr1);
+        arsort($arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        ?>
+    </li>
+    <li>
+        留旧键名，按键名升序排序。arsort($array)
+        <?php
+        $arr1 = ["B" => "3", "D" => "2", "C" => "5", "E" => "6", "A" => "1", "F" => "4"];
+        $arr2 = ["3" => "B", "2" => "D", "5" => "C", "6" => "E", "1" => "A", "4" => "F"];
+        ksort($arr1);
+        ksort($arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        ?>
+    </li>
+    <li>
+        留旧键名，按键名降序排序。arsort($array)
+        <?php
+        $arr1 = ["B" => "3", "D" => "2", "C" => "5", "E" => "6", "A" => "1", "F" => "4"];
+        $arr2 = ["3" => "B", "2" => "D", "5" => "C", "6" => "E", "1" => "A", "4" => "F"];
+        krsort($arr1);
+        krsort($arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        ?>
+    </li>
+    <li>
+        用回调函数排序（默认从小到大）。usort($array)
+        <?php
+        function mysort($a, $b)//返回值为正整数的排后面，为负整数的排前面。
+        {
+            if ($a === $b) {
+                return 0;
+            } elseif (is_string($a) && is_string($b)) {#字符与字符比较，根据ASCII码比较字符串，返回-1,0,1
+                return strcmp($a, $b);
+            } elseif (is_string($a) && is_int($b)) {#字符与数字比较
+                return -1;
+            } elseif (is_int($a) && is_string($b)) {#数字与字符比较
+                return 1;
+            } elseif (is_int($a) && is_int($b)) {#数字与数字比较
+                return -($a - $b);
+            } else {
+                return 0;
+            }
         }
-        usort($a,'MySort');
-        print_r($a);echo '<br />';?>
-    </dd>
 
-    <dt>▲比较键值，返回差集（即与其他数组不同的部分）。array_diff</dt>
-    <dt>▲用回调函数比较键值，返回差集。array_udiff</dt>
-    <dd>
+        $arr = ['b', 2, 'c', 1, 'a', 3, '8', '7'];//包含字符串、数字、字符串中的数字
+        usort($arr, 'mysort');
+        var_dump($arr);
+        ?>
+    </li>
+    <li>
+        比较键值，返回差集（即与其他数组不同的部分）。array_diff($arr1,$arr2)<br/>
         <?php
-        $a1=["a"=>"red","b"=>"green"];
-        $a2=["c"=>"red"];
-        print_r($a1); echo '<br />';
-        print_r($a2); echo '<br />';
-        echo "Result:<br />";
-        print_r(array_diff($a1,$a2)); ?>
-    </dd>
-
-    <dt>▲比较键名，返回差集。array_diff_key</dt>
-    <dt>▲用回调函数比较键名，返回差集。array_diff_ukey</dt>
-    <dd><?php
-        $a1=["a"=>"red","b"=>"green"];
-        $a2=["b"=>"red"];
-        print_r($a1); echo '<br />';
-        print_r($a2); echo '<br />';
-        echo 'Result:<br />';
-        print_r(array_diff_key($a1,$a2)); ?>
-    </dd>
-
-    <dt>▲比较键名和键值，返回差集。array_diff_assoc</dt>
-    <dt>▲比较键名和键值，用回调函数比较键名，返回差集。array_diff_uassoc</dt>
-    <dt>▲比较键名和键值，用回调函数比较键值，返回差集。array_udiff_assoc</dt>
-    <dt>▲用回调函数比较键名和键值，返回差集。array_udiff_uassoc</dt>
-    <dd><?php
-        $a1=["a"=>"red","b"=>"green","c"=>"red"];
-        $a2=["b"=>"bread","c"=>"red"];
-        print_r($a1); echo '<br />';
-        print_r($a2); echo '<br />';
-        echo "Result:<br />";
-        print_r(array_diff_assoc($a1,$a2)); ?>
-    </dd>
-
-    <dt>▲比较键值，返回交集。array_intersect</dt>
-    <dt>▲用回调函数比较键值，返回交集。array_uintersect</dt>
-    <dd><?php
-        $a1=["a"=>"chip","b"=>"green","d"=>"red"];
-        $a2=["e"=>"green","c"=>"red"];
-        print_r($a1); echo '<br />';
-        print_r($a2); echo '<br />';
-        echo 'Result:<br />';
-        print_r(array_intersect($a1,$a2));echo '<br />';
-        function MyIntersect($a,$b){
-            $result=strcmp($a,$b);
-            if($result==1)return 0;
-            elseif($result==0)return 0;
-            elseif($result==-1)return 0;
-            else return 0;
-        }
-        print_r(array_uintersect($a1,$a2,'MyIntersect')); ?>
-    </dd>
-
-    <dt>▲比较键名，返回交集。array_intersect_key</dt>
-    <dt>▲用回调函数比较键名，返回交集。array_intersect_ukey</dt>
-    <dd><?php
-        $a1=["a"=>"chips","b"=>"green","e"=>"red"];
-        $a2=["e"=>"green","c"=>"red"];
-        print_r($a1); echo '<br />';
-        print_r($a2); echo '<br />Result:<br />';
-        print_r(array_intersect_key($a1,$a2)); ?>
-    </dd>
-
-    <dt>▲比较键名和键值，返回交集。array_intersect_assoc</dt>
-    <dt>▲比较键名和键值，用回调函数比较键值，返回交集。array_uintersect_assoc</dt>
-    <dt>▲比较键名和键值，用回调函数比较键名，返回交集。array_intersect_uassoc</dt>
-    <dt>▲用回调函数比较键名和键值，返回交集。array_uintersect_uassoc</dt>
-    <dd><?php
-        $a1=["a"=>"chips","b"=>"green","c"=>"red"];
-        $a2=["e"=>"green","c"=>"red"];
-        print_r($a1); echo '<br />';
-        print_r($a2); echo '<br />Result:<br />';
-        print_r(array_intersect_assoc($a1,$a2)); ?>
-    </dd>
-
-    <dt>▲交换数组中的键和值。array_flip</dt>
-    <dd><?php
-        $a1=['apple','banana','cheese'];
-        $a2=['a'=>'apple','b'=>'banana','c'=>'cheese'];
-        print_r($a1); echo '<br />';
-        print_r($a2); echo '<br />Result:<br />';
-        print_r(array_flip($a1));echo '<br />';
-        print_r(array_flip($a2)); ?>
-    </dd>
-
-    <dt>▲以指定数量的元素构成数组（指定开始索引）。array_fill</dt>
-    <dd><?php
-        $a1=array_fill(100,3,"aa");
-        print_r($a1); ?>
-    </dd>
-
-    <dt>▲用指定值将数组填补到指定长度。array_pad</dt>
-    <dd><?php $a2=['apple','banana'];
-        print_r(array_pad($a2,4,"cheese")); ?>
-    </dd>
-
-    <dt>▲检查某个数组中是否存在指定的键名。array_key_exists</dt>
-    <dd>
+        $arr1 = ["a" => "red", "b" => "green"];
+        $arr2 = ["c" => "red"];
+        $result = array_diff($arr1, $arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        比较键名，返回差集（即与其他数组不同的部分）。array_diff_key($arr1,$arr2)<br/>
         <?php
-        $a1=['a'=>'apple','b'=>'banana'];
-        print_r($a1); echo '<br />';
-        var_dump(array_key_exists('a',$a1));echo ', ';
-        var_dump(array_key_exists('b',$a1));echo ', ';
-        var_dump(array_key_exists('c',$a1)); ?>
-    </dd>
+        $arr1 = ["a" => "red", "b" => "green"];
+        $arr2 = ["b" => "red"];
+        $result = array_diff_key($arr1, $arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        比较键名和键值，返回差集。array_diff_assoc($arr1,$arr2)<br/>
+        比较键名和键值，用回调函数比较键名，返回差集。array_diff_uassoc<br/>
+        比较键名和键值，用回调函数比较键值，返回差集。array_udiff_assoc<br/>
+        用回调函数比较键名和键值，返回差集。array_udiff_uassoc
+        <?php
+        $arr1 = ["a" => "red", "b" => "green", "c" => "red"];
+        $arr2 = ["b" => "bread", "c" => "red"];
+        $result = array_diff_assoc($arr1, $arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        比较键值，返回交集。array_intersect($arr1,$arr2)<br/>
+        <?php
+        $arr1 = ["a" => "chip", "b" => "green", "d" => "red"];
+        $arr2 = ["e" => "green", "c" => "red"];
+        $result = array_intersect($arr1, $arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        比较键名，返回交集。array_intersect_key($arr1,$arr2)<br/>
+        <?php
+        $arr1 = ["a" => "chips", "b" => "green", "e" => "red"];
+        $arr2 = ["e" => "green", "c" => "red"];
+        $result = array_intersect_key($arr1, $arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        比较键名和键值，返回交集。array_diff_assoc($arr1,$arr2)<br/>
+        比较键名和键值，用回调函数比较键名，返回差集。array_intersect_uassoc<br/>
+        比较键名和键值，用回调函数比较键值，返回差集。array_uintersect_assoc<br/>
+        用回调函数比较键名和键值，返回交集。array_uintersect_uassoc
+        <?php
+        $arr1 = ["a" => "red", "b" => "green", "c" => "red"];
+        $arr2 = ["e" => "green", "c" => "red"];
+        $result = array_intersect_assoc($arr1, $arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        交换数组中的键和值。array_flip($array)
+        <?php
+        $arr1 = ['apple', 'banana', 'cheese'];
+        $arr2 = ['a' => 'apple', 'b' => 'banana', 'c' => 'cheese'];
+        var_dump($arr1);
+        var_dump($arr2);
+        $result = array_flip($arr1);
+        var_dump($result);
+        $result = array_flip($arr2);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        以指定数量的元素，构成数组（指定开始索引）。array_fill($start_index,$number,$value)
+        <?php
+        $result = array_fill(101, 5, 'hello');
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        用指定值，将数组填补到指定长度。array_pad($array,$pad_size,$pad)
+        <?php
+        $arr = ['apple', 'banana'];
+        $result = array_pad($arr, 5, 'cheese');
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        检查某个数组中，是否存在指定的键名。array_key_exists($key,$array)
+        <?php
+        $arr = ['a' => 'apple', 'b' => 'banana'];
+        $result = array_key_exists('a', $arr);
+        var_dump($result);
 
-    <dt>▲搜索数组中是否存在指定的值。in_array</dt>
-    <dd><?php
-        $a1=['a'=>'apple','b'=>'banana'];
-        print_r($a1); echo '<br />';
-        var_dump(in_array('apple',$a1));echo ', ';
-        var_dump(in_array('banana',$a1));echo ', ';
-        var_dump(in_array('cheese',$a1)); ?>
-    </dd>
+        $result = array_key_exists('c', $arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        检查某个数组中，是否存在指定的键值。in_array($value,$array)
+        <?php
+        $arr = ['a' => 'apple', 'b' => 'banana'];
+        $result = in_array('apple', $arr);
+        var_dump($result);
 
-    <dt>▲返回包含数组中所有键名的数组。array_keys</dt>
-    <dd><?php
-        $a1=['USA'=>1000,'UFO'=>2000,'FBI'=>3000];
-        print_r($a1); echo '<br />';
-        print_r(array_keys($a1)); echo '<br />'; ?>
-    </dd>
+        $result = in_array('cheese', $arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        返回包含数组中所有键名的数组。array_keys($array)
+        <?php
+        $arr = ['USA' => 1001, 'UFO' => 1002, 'FBI' => 1003];
+        $result = array_keys($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        返回包含数组中所有值的数组。array_values($array)
+        <?php
+        $arr = ['USA' => 1001, 'UFO' => 1002, 'FBI' => 1003];
+        $result = array_values($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        在数组中搜索某个键值，并返回对应的键名。array_search($value,$array)
+        <?php
+        $arr = ['USA' => 1001, 'UFO' => 1002, 'FBI' => 1003];
+        $result = array_search(1002, $arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        合并一个或多个数组，相同键名的用后值覆盖前值。array_merge($arr1,$arr2)
+        <?php
+        $arr1 = ['a' => 'apple', 'b' => 'banana'];
+        $arr2 = ['b' => 'dumpling', 'c' => 'chips'];
+        $result = array_merge($arr1, $arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        合并一个或多个数组，相同键名的递归合并。array_merge_recursive($arr1,$arr2)
+        <?php
+        $arr1 = ['a' => 'apple', 'b' => 'banana'];
+        $arr2 = ['b' => 'dumpling', 'c' => 'chips'];
+        $result = array_merge_recursive($arr1, $arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        向数组开头插入新元素，返回新数组的长度。array_unshift($array,$value...)
+        <?php
+        $arr = ['apple', 'banana', 'chip'];
+        $result = array_unshift($arr, 'eggplant', 'fish');
+        var_dump($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        向数组尾部添加新元素，返回新数组的长度。array_push($array,$value...)
+        <?php
+        $arr = ['apple', 'banana', 'chip'];
+        $result = array_push($arr, 'eggplant', 'fish');
+        var_dump($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        删除数组中第一个元素，并返回这个元素。array_shift($array)
+        <?php
+        $arr = ['apple', 'banana', 'chip'];
+        $result = array_shift($arr);
+        var_dump($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        删除数组中最后一个元素，并返回这个元素。array_pop($array)
+        <?php
+        $arr = ['apple', 'banana', 'chip'];
+        $result = array_pop($arr);
+        var_dump($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        从数组中根据条件(开始与长度)取出一部分，返回取出的数组(true保留键名，false重置键名)。array_slice($array,$start,$length,$preserve)
+        <?php
+        $arr = ['apple', 'banana', 'chip'];
+        var_dump($arr);
+        $result = array_slice($arr, 2, 2, true);
+        var_dump($result);
 
-    <dt>▲返回包含数组中所有值的数组。array_values</dt>
-    <dd><?php
-        $a1=['USA'=>1000,'UFO'=>2000,'FBI'=>3000];
-        print_r($a1); echo '<br />';
-        print_r(array_values($a1)); ?>
-    </dd>
+        $result = array_slice($arr, 2, 2, false);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        从数组中用新元素取代选定的部分，返回被移除的部分。array_splice($array)
+        <?php
+        $arr = ['apple', 'banana', 'chip'];
+        var_dump($arr);
+        $result = array_splice($arr, 1, 1, ['JAP', 'CN', 'EN']);
+        var_dump($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        使用后面数组的值替换前数组的值（索引对索引交换，不够长则保留原值；如果前数组有键名，则不会被移除）。array_replace($arr1,$arr2)
+        <?php
+        $arr1 = ['apple', 'banana', 'chip'];
+        $arr2 = ['chiken', 'noodle'];
+        $result = array_replace($arr1, $arr2);
+        var_dump($arr1);
+        var_dump($arr2);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        从数组中随机取出一个或指定个数的键名。array_rand($array,$num)
+        <?php
+        $arr = ['apple', 'banana', 'chip', 'chiken', 'noodle'];
+        var_dump($arr);
 
-    <dt>▲在数组中搜索某个键值，并返回对应的键名。array_search</dt>
-    <dd><?php
-        $a1=['USA'=>1000,'UFO'=>2000,'FBI'=>3000];
-        print_r($a1); echo '<br />';
-        echo array_search(2000,$a1); ?>
-    </dd>
+        $result = array_rand($arr);
+        var_dump($result);
 
-    <dt>▲合并一个或多个数组，相同键名的用后值覆盖前值。array_merge</dt>
-    <dd><?php
-        $a1=['a'=>'apple','b'=>'banana'];
-        $a2=['b'=>'dumpling','c'=>'chips'];
-        print_r($a1); echo '<br />';
-        print_r($a2); echo '<br />Result:<br />';
-        print_r(array_merge($a1,$a2)); ?>
-    </dd>
+        $result = array_rand($arr, 3);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        以相反的元素顺序返回数组。array_reverse($array)
+        <?php
+        $arr = [1, 3, 5, 7];
+        $result = array_reverse($arr);
+        var_dump($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        移除数组中的重复的值，并返回结果数组。array_unique($arr)
+        <?php
+        $arr = [1, 1, 2, 2, 3];
+        $result = array_unique($arr);
+        var_dump($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        返回数组中当前元素的值。current($array)
+        <?php
+        $arr = ['apple', 'banana', 'chip'];
+        $result = current($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        将内部指针指向数组中的下一个元素，并返回该元素。next($array)
+        <?php
+        $arr = ['apple', 'banana', 'chip'];
+        $result = next($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        将内部指针指向数组中的上一个元素，并返回该元素。next($array)
+        <?php
+        $result = prev($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        将数组内部指针指向最后一个元素，若成功则返回该元素的值。end($array)
+        <?php
+        $result = end($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        将内部指针指向数组中的第一个元素，并返回该元素的值。reset($array)
+        <?php
+        $result = reset($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        返回数组内部指针当前指向元素的键名。key($array)
+        <?php
+        $result = key($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        给一组变量赋值。list($array)
+        <?php
+        $arr = ['apple', 'banana', 'chip'];
+        var_dump($arr);
+        list($var1, $var2, $var3) = $arr;
+        var_dump($var1);
+        var_dump($var2);
+        var_dump($var3);
+        ?>
+    </li>
+    <li>
+        创建一个包含指定范围的元素的数组。range($start,$end)
+        <?php
+        $result = range(0, 6);
+        var_dump($result);
 
-    <dt>▲合并一个或多个数组，相同键名的递归合并。array_merge_recursive</dt>
-    <dd><?php
-        $a1=['a'=>'apple','b'=>'banana'];
-        $a2=['b'=>'dumpling','c'=>'chips'];
-        print_r($a1); echo '<br />';
-        print_r($a2); echo '<br />Result:<br />';
-        print_r(array_merge_recursive($a1,$a2)); ?>
-    </dd>
-
-    <dt>▲向数组开头插入新元素，返回新数组的长度。array_unshift</dt>
-    <dd><?php
-        $a1=['apple','banana','chip'];
-        print_r($a1);echo '<br />';
-        echo array_unshift($a1,'eggplant','fish'),'<br />';
-        print_r($a1); ?>
-    </dd>
-
-    <dt>▲删除数组中第一个元素，返回被删除元素的值。array_shift</dt>
-    <dd><?php print_r($a1);echo '<br />';
-        echo array_shift($a1),'<br />';
-        print_r($a1); ?>
-    </dd>
-    <dt>▲删除数组中最后一个元素，返回最后一个元素。array_pop</dt>
-    <dd><?php print_r($a1);echo '<br />';
-        echo array_pop($a1),'<br />';
-        print_r($a1); ?>
-    </dd>
-
-    <dt>▲向数组尾部添加新元素，返回新数组的长度。array_push</dt>
-    <dd><?php print_r($a1);echo '<br />';
-        echo array_push($a1,'UFO','FBI'),'<br />';
-        print_r($a1); ?>
-    </dd>
-
-    <dt>▲从数组中根据条件(开始与长度)取出一部分，返回取出的数组(true保留键名，false重置键名)。array_slice(array,start,length,preserve)，</dt>
-    <dd><?php print_r($a1);echo '<br />';
-        print_r(array_slice($a1,2,2,true)); ?></dd>
-
-    <dt>▲从数组中移除选定的元素，用新元素取代它，返回被移除元素的数组。array_splice</dt>
-    <dd><?php print_r($a1);echo '<br />';
-        print_r($a1);echo '<br />';
-        print_r(array_splice($a1,0,2,['JAP','CN','EN']));echo '<br />';
-        //从索引0处添加，第三个参数是要删除的元素个数，不会影响要添加的元素个数
-        print_r($a1); ?>
-    </dd>
-
-    <dt>▲使用后面数组的值替换前数组的值（索引对索引交换，不够长则保留原值；如果前数组有键名，则不会被移除）。array_replace</dt>
-    <dd><?php
-        $a2=['chiken','noodle'];
-        print_r($a1);echo '<br />';
-        print_r($a2);echo '<br />';
-        print_r(array_replace($a1,$a2)); ?>
-    </dd>
-
-    <dt>▲从数组中随机取出一个或多个键名。array_rand</dt>
-    <dd><?php
-        echo array_rand($a1,1),'<br />';
-        print_r(array_rand($a1,2));?>
-    </dd>
-
-    <dt>▲以相反的元素顺序返回数组。array_reverse</dt>
-    <dd><?php
-        print_r($a1);echo '<br />';
-        print_r(array_reverse($a1));echo '<br />'; ?>
-    </dd>
-
-    <dt>▲移除数组中的重复的值，并返回结果数组。array_unique</dt>
-    <dd><?php
-        $a1=[1,1,2,2,3];
-        print_r($a1);echo '<br />';
-        print_r(array_unique($a1)); ?>
-    </dd>
-
-    <dt>▲返回数组中的当前元素的值。current</dt>
-    <?php $a1=['apple','banana','chip'];?>
-    <dd><?=current($a1)?></dd>
-
-    <dt>▲将内部指针指向数组中的下一个元素，并返回该元素。next</dt>
-    <dd><?=next($a1)?></dd>
-
-    <dt>▲将内部指针指向数组中的上一个元素，并返回该元素。prev</dt>
-    <dd><?=prev($a1)?></dd>
-
-    <dt>▲将数组内部指针指向最后一个元素，若成功则返回该元素的值。end</dt>
-    <dd><?=end($a1)?></dd>
-
-    <dt>▲将内部指针指向数组中的第一个元素，并返回该元素的值。reset</dt>
-    <dd><?=reset($a1)?></dd>
-
-    <dt>▲返回数组内部指针当前指向元素的键名。key</dt>
-    <dd><?=key($a1)?></dd>
-
-    <dt>▲给一组变量赋值。list</dt>
-    <dd><?php
-        $a1=['first','second','third'];
-        list($v1,$v2,$v3)=$a1;
-        echo "$v1, $v2, $v3"; ?>
-    </dd>
-
-    <dt>▲创建一个包含指定范围的元素的数组。range</dt>
-    <dd><?php
-        print_r(range(0,7));echo '<br />';
-        print_r(range('a','g')); ?>
-    </dd>
-
-    <dt>▲把数组中的元素按随机顺序重新排列。shuffle</dt>
-    <dd><?php
-        shuffle($a1);
-        print_r($a1); ?>
-    </dd>
-
-    <dt>▲返回输入数组中某个单一列的值组成的数组。array_column</dt>
-    <dd><?php
-        $arr1 = [
+        $result = range('a', 'f');
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        把数组中的元素按随机顺序重新排列。shuffle($array)
+        <?php
+        $arr = ['apple', 'banana', 'chip'];
+        shuffle($arr);
+        var_dump($arr);
+        ?>
+    </li>
+    <li>
+        返回输入数组中某个单一列的值组成的数组。array_column($arr,$column_name)
+        <?php
+        $arr = [
             ['id' => 5698, 'first_name' => 'Bill', 'last_name' => 'Gates'],
             ['id' => 4767, 'first_name' => 'Steve', 'last_name' => 'Jobs'],
             ['id' => 3809, 'first_name' => 'Mark', 'last_name' => 'Zuckerberg']
         ];
-        print_r(array_column($arr1, 'id'));echo '<br />';
-        print_r(array_column($arr1, 'first_name'));echo '<br />';
-        print_r(array_column($arr1, 'last_name')); ?>
-    </dd>
+        var_dump($arr);
+        $result = array_column($arr, 'id');
+        var_dump($result);
 
-    <dt>▲array_combine(keys_array,values_array)，通过合并两个数组来创建一个新数组，其中的一个数组是键名，另一个数组的值为键值（两数组元素个数必须相同）。</dt>
-    <dd><?php
-        $arr1=array("Bill","Steve","Mark");
-        $arr2=array("60","56","31");
-        print_r($arr1);echo '<br />';
-        print_r($arr2);echo '<br />Result:<br />';
-        print_r(array_combine($arr1,$arr2)); ?>
-    </dd>
+        $result = array_column($arr, 'first_name');
+        var_dump($result);
 
-    <dt>▲对数组中的所有值进行计数。array_count_values(array)，</dt>
-    <dd><?php
-        $arr1=["chips","chips","potatoes","potatoes","potatoes"];
-        print_r($arr1);echo '<br />Result:<br />';
-        print_r(array_count_values($arr1)); ?>
-    </dd>
-
-    <dt>▲创建包含变量名和它们的值的数组。compact</dt>
-    <dd><?php
+        $result = array_column($arr, 'last_name');
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        合并两个数组为一个新数组，一个数组作键名，一个数组作键值（元素个数必须相同）。array_combine(keys_array,values_array)
+        <?php
+        $arr1 = array("Bill", "Steve", "Mark");
+        $arr2 = array("60", "56", "31");
+        var_dump($arr1);
+        var_dump($arr2);
+        $result = array_combine($arr1, $arr2);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        对数组中的所有值进行计数。array_count_values($array)
+        <?php
+        $arr = ["chips", "chips", "potatoes", "potatoes", "potatoes"];
+        var_dump($arr);
+        $result = array_count_values($arr);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        创建包含变量名和它们的值的数组。compact($var_name1,...)
+        <?php
         $firstname = "Bill";
         $lastname = "Gates";
         $age = "60";
-        echo $firstname,', ',$lastname,', ',$age,'<br />';
-        $result = compact("firstname", "lastname", "age");
-        print_r($result); ?>
-    </dd>
-
-    <dt>▲递归函数：直接或间接调用函数本身的函数。</dt>
-    <dd><?php
+        $result = compact('firstname', 'lastname', 'age');
+        var_dump($result);
+        ?>
+    </li>
+    <li>
+        递归函数：直接或间接调用函数本身的函数。
+        <?php
         /* 函数功能设计：
         情况一（前后值皆非数组），合并(merge)：
             $arr1=[1=>'a'];
@@ -396,50 +509,30 @@
             $arr1=['hkuc'=>[2]];
             $arr2=['hkuc'=>1];
         */
-        function doArray($a1,$a2){
-            foreach($a1 as $k1=>&$v1){
-                foreach($a2 as $k2=>&$v2){
-                    if($k1===$k2){//两数组有相同键
-                        if(is_array($v1)){//两数组相同键的值，若都是数组，或前者是数组后者非数组
-                            $v1= doArray($v1,(array)$v2);
-                        }else{//前值非数组
-                            return array_merge($a1,$a2);
+        function doArray($arr1, $arr2)
+        {
+            foreach ($arr1 as $key1 => &$value1) {
+                foreach ($arr2 as $key2 => &$value2) {
+                    if ($key1 === $key2) {//两数组有相同键
+                        if (is_array($value1)) {//两数组相同键的值，若都是数组，或前者是数组后者非数组
+                            $value1 = doArray($value1, (array)$value2);
+                        } else {//前值非数组
+                            return array_merge($arr1, $arr2);
                         }
                     }
                 }
             }
-            return $a1;
+            return $arr1;
         }
-        $a1=['a'=>['hkuc'=>['hkuc']]];
-        $a2=['a'=>['hkuc'=>1]];
-        print_r($a1);echo '<br />';
-        print_r($a2);echo '<br />';
-        print_r(doArray($a1,$a2));
-        ?>
-    </dd>
 
-    <dt>▲将数组转化为json字符串。json_encode()</dt>
-    <dd>
-        <?php
-        $arr1=['name'=>'pete哈','gender'=>'male'];
-        $json=json_encode($arr1);
-        print_r($arr1);
+        $arr1 = ['a' => ['hkuc' => ['hkuc']]];
+        $arr2 = ['a' => ['hkuc' => 1]];
+        var_dump($arr1);
+        var_dump($arr2);
+        $result = doArray($arr1, $arr2);
+        var_dump($result);
         ?>
-    </dd>
-    <dd><?=$json?></dd>
-    <dt>▲将json字符串转化为std Class或数组。json_decode()</dt>
-    <dd>
-        <?php
-        $result=json_decode($json);
-        print_r($result);
-        ?>
-    </dd>
-    <dd>
-        <?php
-        $result=json_decode($json,true);
-        print_r($result);
-        ?>
-    </dd>
-</dl>
+    </li>
+</ol>
 </body>
 </html>
