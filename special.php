@@ -319,6 +319,15 @@ heredoc1;
         do_static();
         ?>
     </li>
+    <li>
+        返回指定范围内的随机整数。
+        <?php
+        $result = rand();
+        var_dump($result);
+        $result = rand(1, 10);
+        var_dump($result);
+        ?>
+    </li>
 </ol>
 </body>
 </html>
