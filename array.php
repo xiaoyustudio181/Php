@@ -546,6 +546,15 @@
         }
         ?>
     </li>
+    <li>
+        数组插值。$array[]=1;<br/>
+        <?php
+        $arr = ['a' => 1, 'b' => 2];
+        $arr[] = 3;
+        $arr[] = 4;
+        var_dump($arr);
+        ?>
+    </li>
 </ol>
 </body>
 </html>
