@@ -26,26 +26,26 @@ class MySQLiModel
 
         var_dump($mysqli_result);
 
-        //È¡·¨1£ºÊý×ÖµÄ¼üÃûºÍ¼üÖµ
+        //å–æ³•1ï¼šæ•°å­—çš„é”®åå’Œé”®å€¼
         $fetch_all = $mysqli_result->fetch_all();
         var_dump($fetch_all);
 
-        //È¡·¨2£ºÊý×ÖÓë¹ØÁªµÄ¼üÃûºÍ¼üÖµ
+        //å–æ³•2ï¼šæ•°å­—ä¸Žå…³è”çš„é”®åå’Œé”®å€¼
 //        while ($row = $mysqli_result->fetch_array()) {
 //            var_dump($row);
 //        }
 
-        //È¡·¨3£ºÊý×ÖµÄ¼üÃûºÍ¼üÖµ
+        //å–æ³•3ï¼šæ•°å­—çš„é”®åå’Œé”®å€¼
 //        while ($row = $mysqli_result->fetch_row()) {
 //            var_dump($row);
 //        }
 
-        //È¡·¨4£º¹ØÁªµÄ¼üÃûºÍ¼üÖµ
+        //å–æ³•4ï¼šå…³è”çš„é”®åå’Œé”®å€¼
 //        while ($row=$mysqli_result->fetch_assoc()){
 //            var_dump($row);
 //        }
 
-        //»ñÈ¡ÁÐÐÅÏ¢
+        //èŽ·å–åˆ—ä¿¡æ¯
 //        while ($row=$mysqli_result->fetch_field()){
 //            var_dump($row);
 //        }
