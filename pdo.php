@@ -21,6 +21,14 @@ class PDOModel
         $this->PDO = null;
     }
 
+    public function query($sql){
+        return $this->PDO->query($sql)->fetchAll();
+    }
+
+    public function execute($sql){
+        return $this->PDO->exec($sql);
+    }
+
     public function Test()
     {
         echo '<hr />';
