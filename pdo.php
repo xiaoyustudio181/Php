@@ -1,6 +1,6 @@
 <?php
-$M = new PDOModel();
-$M->Test();
+//$M = new PDOModel();
+//$M->Test();
 
 class PDOModel
 {
