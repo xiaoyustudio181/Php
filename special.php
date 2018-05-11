@@ -328,6 +328,13 @@ heredoc1;
         var_dump($result);
         ?>
     </li>
+    <li>
+        执行命令（若开启新程序，会占用程序进程直到关闭）。exec($cmd)
+        <?php
+        $cmd='notepad';
+        #exec($cmd);
+        ?>
+    </li>
 </ol>
 </body>
 </html>
