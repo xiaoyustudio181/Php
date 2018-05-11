@@ -8,25 +8,25 @@ $result = $dom->getElementById('target');
 show_children($result);
 #get_parent_children($result);
 
-#´òÓ¡ÔªËØµÄËùÓĞ×Ó½Úµã
+#æ‰“å°å…ƒç´ çš„æ‰€æœ‰å­èŠ‚ç‚¹
 function show_children($tag, $layer = 1)
 {
     $space = '';
     for ($i = 1; $i < $layer; $i++) {
         $space .= '&nbsp;&nbsp;';
     }
-    foreach ($tag->childNodes as $child) {#±éÀúËùÓĞ×ÓÔªËØ
-        if (hasChild($child)) {#ÈôÓĞ·ÇÎÄ±¾µÄ×ÓÔªËØ
+    foreach ($tag->childNodes as $child) {#éå†æ‰€æœ‰å­å…ƒç´ 
+        if (hasChild($child)) {#è‹¥æœ‰éæ–‡æœ¬çš„å­å…ƒç´ 
             echo $space . '[' . $layer . ']' . $child->nodeName . '<br />';
             $next_layer = $layer + 1;
             show_children($child, $next_layer);
-        } elseif ($child->nodeType == XML_ELEMENT_NODE) {#Ã»ÓĞ·ÇÎÄ±¾µÄ×ÓÔªËØ
+        } elseif ($child->nodeType == XML_ELEMENT_NODE) {#æ²¡æœ‰éæ–‡æœ¬çš„å­å…ƒç´ 
             echo $space . '[' . $layer . ']' . $child->nodeName . '<br />';# (' . $child->nodeValue . ')
         }
     }
 }
 
-#¼ì²éÔªËØÊÇ·ñ°üº¬·ÇÎÄ±¾ÔªËØ
+#æ£€æŸ¥å…ƒç´ æ˜¯å¦åŒ…å«éæ–‡æœ¬å…ƒç´ 
 function hasChild($element)
 {
     if ($element->hasChildNodes()) {
@@ -40,7 +40,7 @@ function hasChild($element)
     return false;
 }
 
-#´òÓ¡ÔªËØµÄ¸¸ÔªËØºÍ×ÓÔªËØ
+#æ‰“å°å…ƒç´ çš„çˆ¶å…ƒç´ å’Œå­å…ƒç´ 
 function get_parent_children($tag){
     echo '<h4>[children]</h4>';
     foreach ($tag->childNodes as $child) {
