@@ -21,14 +21,25 @@ class PDOModel
         $this->PDO = null;
     }
 
+    /*
+     * @describe 执行查询
+     * @param $sql 要执行的SQL语句
+     * @return PDOStatement
+     * */
     public function query($sql){
-        return $this->PDO->query($sql)->fetchAll();
+        return $this->PDO->query($sql);
     }
-
+    /*
+     * @describe 执行增、删、改
+     * @param $sql 要执行的SQL语句
+     * @return 返回受影响的行数
+     * */
     public function execute($sql){
         return $this->PDO->exec($sql);
     }
-
+    /*
+     * @describe 测试与教程
+     * */
     public function Test()
     {
         echo '<hr />';

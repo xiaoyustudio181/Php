@@ -17,6 +17,10 @@ class MySQLiModel
         mysqli_close($this->mysqli);
     }
 
+    function query($sql){
+        return $this->mysqli->query($sql);
+    }
+
     function Test()
     {
         echo '<hr />';
@@ -50,5 +54,8 @@ class MySQLiModel
 //            var_dump($row);
 //        }
 
+//        $result=$this->mysqli->query("update `profiles` set `name`='甲' where `employeeid`=1;");
+//        var_dump($result);
+//        var_dump($this->mysqli);//包含受影响行数，以及上次插入生成的新id
     }
 }
