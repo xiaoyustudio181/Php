@@ -7,14 +7,23 @@
 <body>
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST'){
+    var_dump($_GET);
+    echo '<hr/>';
+
     var_dump($_POST);
-    if($_FILES){
-        var_dump($_FILES);
-        var_dump($_REQUEST);//包含get和post的值
-    }
+    echo '<hr/>';
+
+    var_dump($_REQUEST);//包含get和post的值
+    echo '<hr/>';
+
+    parse_str($_SERVER['QUERY_STRING']);//根据get-query参数定义变量
+    var_dump($word1.' '.$word2);
+    echo '<hr/>';
+
+    var_dump($_FILES);
 }
 ?>
-<form action="" method="post" enctype="multipart/form-data">
+<form action="submit.php?word1=hey&word2=there&nums[]=100&nums[]=200" method="post" enctype="multipart/form-data">
     <h2>表单</h2>
     <dl>
         <dt>姓名</dt>
