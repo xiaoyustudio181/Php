@@ -10,6 +10,8 @@
         date_default_timezone_set("Asia/Shanghai")<br/>
         获取现在日期时间。date($format)<br/>
         <?php
+        $begin = get_time();//计时开始（测试计时方法）
+
         echo date('Y-m-d H:i:s'), "<br />";#月m有前缀0，月n无前缀0
         echo date('y-m-d H:i:s'), "<br />";#日d有前缀0，日j无前缀0
         #时H(00~23)有前缀0；时G(0~23)无前缀0；时h(01~12)有前缀0，时g(1~12)无前缀0；a(am,pm)，A(AM,PM)
@@ -82,4 +84,15 @@
     </li>
 </ol>
 </body>
+<?php
+echo "程序运行到此处总耗时：".(get_time() - $begin) . " (sec)";//计时完毕（测试计时方法）
+/*
+ * @describe 获取当前系统时间，返回float格式，单位：秒
+ * */
+function get_time() {
+    date_default_timezone_set('Asia/Shanghai');
+    list($usec, $sec) = explode(" ", microtime());
+    return ((float)$usec + (float)$sec);
+}
+?>
 </html>
