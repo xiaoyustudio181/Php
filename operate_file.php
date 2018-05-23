@@ -59,6 +59,17 @@ XML = EXtensible Markup Language");
         ?>
     </li>
     <li>
+        读文件（从指定位置开始读）。file_get_contents(path,false,null,start_part)
+        <?php
+        $path = './article.txt';
+        $result = file_get_contents($path);
+        $result = file_get_contents($path,false,null,strpos($result,'PHP'));
+        var_dump($result);
+
+        echo str_replace("\n", '<br/>', $result);
+        ?>
+    </li>
+    <li>
         获取文件的大小（字节）。filesize($path)
         <?php
         $path = './article.txt';
