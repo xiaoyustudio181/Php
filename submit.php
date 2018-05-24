@@ -46,6 +46,37 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             <input name="age" type="number" min="0" max="120" placeholder="age" value="21" />
         </dd>
 
+        <dt>生日</dt>
+        <dd>
+            <input type="date" name="birthday"/>
+        </dd>
+        <dd>
+            <input type="datetime-local" name="datetime"/>
+        </dd>
+        <dd>
+            <input type="time" name="birth-time"/>
+        </dd>
+
+        <dt>家乡（多选）</dt>
+        <dd>
+            <select multiple="multiple" name="native[]" style="width: 100px">
+                <optgroup label="四川省">
+                    <option value="chengdu">成都市</option>
+                    <option value="mianyang">绵阳市</option>
+                    <option value="chengdu">自贡市</option>
+                    <option value="panzhihua">攀枝花</option>
+                    <option value="luzhou">泸州</option>
+                </optgroup>
+                <optgroup label="广东省">
+                    <option value="guangzhou">广州市</option>
+                    <option value="shenzhen">深圳市</option>
+                    <option value="zhuhai">珠海市</option>
+                    <option value="shantou">汕头市</option>
+                    <option value="foshan">佛山市</option>
+                </optgroup>
+            </select>
+        </dd>
+
         <dt>密码</dt>
         <dd>
             <input name="password" type="password" placeholder="password" value="123" />
