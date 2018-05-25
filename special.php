@@ -7,19 +7,19 @@
 <body>
 <ol>
     <li>
-        当前所在文件。__FILE__
+        当前所在文件的绝对路径。__FILE__
         <?php
         var_dump(__FILE__);
         ?>
     </li>
     <li>
-        当前所在目录。__DIR__
+        当前所在目录的绝对路径。__DIR__
         <?php
         var_dump(__DIR__);
         ?>
     </li>
     <li>
-        返回当前所在目录。getcwd()
+        返回当前所在目录的绝对路径。getcwd()
         <?php
         $result = getcwd();
         var_dump($result);
