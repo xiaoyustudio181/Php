@@ -38,7 +38,7 @@
         $mode 参数：默认为覆盖写入，当值为 FILE_APPEND 时为追加。
         <?php
         $path = './article.txt';
-        $result=file_put_contents($path, "AJAX = Asynchronous JavaScript and XML
+        $result = file_put_contents($path, "AJAX = Asynchronous JavaScript and XML
 CSS = Cascading Style Sheets
 HTML = Hyper Text Markup Language
 PHP = PHP Hypertext Preprocessor
@@ -63,7 +63,7 @@ XML = EXtensible Markup Language");
         <?php
         $path = './article.txt';
         $result = file_get_contents($path);
-        $result = file_get_contents($path,false,null,strpos($result,'PHP'));
+        $result = file_get_contents($path, false, null, strpos($result, 'PHP'));
         var_dump($result);
 
         echo str_replace("\n", '<br/>', $result);
@@ -96,7 +96,7 @@ XML = EXtensible Markup Language");
     <li>
         关闭文件。成功返回true，否则返回false。fclose($resouce)
         <?php
-        $result=fclose($res);
+        $result = fclose($res);
         var_dump($result);
         ?>
     </li>
@@ -124,6 +124,18 @@ XML = EXtensible Markup Language");
         ?>
     </li>
     <li>
+        检查路径是否为文件。is_file($path)
+        <?php
+        $path = './article.txt';
+        $result = is_file($path);
+        var_dump($result);
+
+        $path = './test_dir';
+        $result = is_file($path);
+        var_dump($result);
+        ?>
+    </li>
+    <li>
         检查文件或目录是否存在。file_exists($path)
         <?php
         $path = './article.txt';
@@ -146,13 +158,13 @@ XML = EXtensible Markup Language");
         if (!file_exists($path)) {
             mkdir($path);
         }
-        if(!file_exists($path . '/a.txt'))
+        if (!file_exists($path . '/a.txt'))
             file_put_contents($path . '/a.txt', '');
-        if(!file_exists($path . '/b.jpg'))
+        if (!file_exists($path . '/b.jpg'))
             file_put_contents($path . '/b.jpg', '');
-        if(!file_exists($path . '/c.doc'))
+        if (!file_exists($path . '/c.doc'))
             file_put_contents($path . '/c.doc', '');
-        if(!file_exists($path . '/d.exe'))
+        if (!file_exists($path . '/d.exe'))
             file_put_contents($path . '/d.exe', '');
         ?>
     </li>
@@ -168,7 +180,7 @@ XML = EXtensible Markup Language");
         删除文件。 并警告。unlink($path)
         <?php
         $path = './test_dir/d.exe';
-        if(file_exists($path)){
+        if (file_exists($path)) {
             $result = unlink($path);
             var_dump($result);
         }
@@ -178,7 +190,7 @@ XML = EXtensible Markup Language");
         复制文件到。copy($path,$new_path)
         <?php
         $path = './article.txt';
-        $result=copy($path,'./test_dir/article_.txt');
+        $result = copy($path, './test_dir/article_.txt');
         var_dump($result);
         ?>
     </li>
@@ -186,7 +198,7 @@ XML = EXtensible Markup Language");
         重命名（或移动）文件或目录。成功返回 true，否则返回 false 并警告。rename($oldname,$newname)
         <?php
         $path = './test_dir/article_.txt';
-        $result=rename($path,'./test_dir/article_.txt');
+        $result = rename($path, './test_dir/article_.txt');
         var_dump($result);
         ?>
     </li>
