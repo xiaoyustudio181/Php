@@ -59,7 +59,7 @@ XML = EXtensible Markup Language");
         ?>
     </li>
     <li>
-        读文件（从指定位置开始读）。file_get_contents(path,false,null,start_part)
+        读文件（从指定位置开始读）。file_get_contents(path,false,null,start_index)
         <?php
         $path = './article.txt';
         $result = file_get_contents($path);
@@ -67,6 +67,15 @@ XML = EXtensible Markup Language");
         var_dump($result);
 
         echo str_replace("\n", '<br/>', $result);
+        ?>
+    </li>
+    <li>
+        读文件（从指定位置开始读指定的最大长度）。file_get_contents(path,false,null,start_index,max_length)
+        <?php
+        $path = './article.txt';
+        $result = file_get_contents($path);
+        $result = file_get_contents($path, false, null, strpos($result, 'PHP'),20);
+        var_dump($result);
         ?>
     </li>
     <li>
@@ -177,7 +186,7 @@ XML = EXtensible Markup Language");
         ?>
     </li>
     <li>
-        删除文件。 并警告。unlink($path)
+        删除文件。并警告。unlink($path)
         <?php
         $path = './test_dir/d.exe';
         if (file_exists($path)) {
