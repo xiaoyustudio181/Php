@@ -81,31 +81,34 @@
         检查变量是否定义。isset($var)<br/>
         销毁变量。unset($var)
         <?php
-        $var10 = 1;
-        $result = isset($var10);
+        $var10 = 0;
+        $result = isset($var10);//true
         var_dump($result);
 
         unset($var10);
-        $result = isset($var10);
+        $result = isset($var10);//false
         var_dump($result);
         ?>
     </li>
     <li>
         检查变量是否为空。empty($var)
         <?php
-        $result = empty('');
+        $result = empty($undefined_var);//true
         var_dump($result);
 
-        $result = empty(0);
+        $result = empty('');//true
         var_dump($result);
 
-        $result = empty(false);
+        $result = empty(0);//true
         var_dump($result);
 
-        $result = empty([]);
+        $result = empty(false);//true
         var_dump($result);
 
-        $result = empty(null);
+        $result = empty([]);//true
+        var_dump($result);
+
+        $result = empty(null);//true
         var_dump($result);
         ?>
     </li>
