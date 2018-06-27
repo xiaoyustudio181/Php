@@ -307,7 +307,16 @@ heredoc1;
         ?>
     </li>
     <li>
-
+        global 将方法外的变量引到方法内。
+        <?php
+        $included1='from file';
+        function testIncluded(){
+            global $included1;
+            var_dump($included1);
+        }
+        testIncluded();
+        ?>
+    </li>
     <li>
         static 保留局部变量值。<br/>
         <?php
