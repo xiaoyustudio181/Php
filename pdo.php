@@ -1,6 +1,7 @@
 <?php
-//$M = new PDOModel();
-//$M->Test();
+include_once 'config.php';
+$M = new PDOModel();
+$M->Test();
 
 class PDOModel
 {
@@ -8,11 +9,17 @@ class PDOModel
 
     function __construct()
     {
+        global $global_config;
+        $host = $global_config['host'];
+        $port = $global_config['port'];
+        $dbname = $global_config['dbname'];
+        $username = $global_config['username'];
+        $password = $global_config['password'];
         try {
             $options = [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"];
-            $this->PDO = new PDO("mysql:host=localhost; dbname=company1", 'root', '', $options);
+            $this->PDO = new PDO("mysql:host=$host; port=$port; dbname=$dbname", $username, $password, $options);
         } catch (PDOException $e) {
-            die( "数据库连接失败。" .$e->getMessage());
+            die("数据库连接失败。" . $e->getMessage());
         }
     }
 
@@ -26,17 +33,21 @@ class PDOModel
      * @param $sql 要执行的SQL语句
      * @return PDOStatement
      * */
-    public function query($sql){
+    public function query($sql)
+    {
         return $this->PDO->query($sql);
     }
+
     /*
      * @describe 执行增、删、改
      * @param $sql 要执行的SQL语句
      * @return 返回受影响的行数
      * */
-    public function execute($sql){
+    public function execute($sql)
+    {
         return $this->PDO->exec($sql);
     }
+
     /*
      * @describe 测试与教程
      * */
@@ -47,8 +58,8 @@ class PDOModel
         $pdo_statement = $this->PDO->query('show databases;');
 //        $pdo_statement = $this->PDO->query('select * from `profiles`;');
 
-        echo '查询结果的列数：',$pdo_statement->columnCount(),'<br />';
-        echo '查询结果的行数：',$pdo_statement->rowCount();
+        echo '查询结果的列数：', $pdo_statement->columnCount(), '<br />';
+        echo '查询结果的行数：', $pdo_statement->rowCount();
 
         //取法1：数字与关联的键名和键值
 //        foreach ($pdo_statement as $row){
