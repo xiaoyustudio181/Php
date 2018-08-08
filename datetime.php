@@ -13,7 +13,8 @@
         ?>
     </li>
     <li>
-        设置时间区域。date_default_timezone_set("Asia/Shanghai")
+        设置时间区域。date_default_timezone_set("Asia/Shanghai")<br/>
+      或在 php.ini 设置 [Date] 的 date.timezone=Asia/Shanghai
         <?php
         date_default_timezone_set('Asia/Shanghai');
         ?>
